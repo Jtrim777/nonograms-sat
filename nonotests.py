@@ -49,20 +49,18 @@ sol3 = [-1, -2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, 14, -15,
 def test(size, rows, cols, expectedSol):
     form = reduce_board(size, rows, cols)
     testSol = solve(form)
-    passed = True
     for i in range(size * size):
-        if testSol[1][i] != expectedSol[i]:
-            passed = False
-    print(passed)
+        assert(testSol[1][i] == expectedSol[i])
 
 
 badRowSet1 = [[3, 1], [1, 1], [3, 6], [3], [2, 1, 4], [6], [7], [5], [5], [2, 1]]
 badColSet1 = [[1, 1], [1, 1, 1], [3], [1, 3], [1, 2, 1], [7], [7], [7], [3, 5], [1, 3]]
 
+
 def assert_bad(size, rows, cols):
     form = reduce_board(size, rows, cols)
     testSol = solve(form)
-    print(not testSol[1])
+    assert(not testSol[0])
 
 
 def test_all():
